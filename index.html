@@ -8,23 +8,22 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&family=Orbitron:wght@700&display=swap');
         
-        body { font-family: 'Noto Sans TC', sans-serif; scroll-behavior: smooth; }
+        body { font-family: 'Noto Sans TC', sans-serif; scroll-behavior: smooth; background-color: #001529; }
         .navy-dark { background-color: #001529; }
         
-        /* 淺藍色霓虹燈字體效果 */
+        /* 霓虹燈效果 */
         .neon-text {
             font-family: 'Orbitron', sans-serif;
             color: #fff;
-            text-shadow: 
-                0 0 5px #fff,
-                0 0 10px #fff,
-                0 0 20px #00d2ff,
-                0 0 30px #00d2ff,
-                0 0 40px #00d2ff;
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #00d2ff, 0 0 30px #00d2ff;
         }
 
-        .hero-gradient {
-            background: linear-gradient(to right, rgba(0, 21, 41, 0.95) 20%, rgba(0, 21, 41, 0.4) 100%);
+        /* 讓背景若隱若現的漸層遮罩 */
+        .hero-overlay {
+            background: linear-gradient(75deg, 
+                rgba(0, 21, 41, 1) 20%, 
+                rgba(0, 21, 41, 0.8) 50%, 
+                rgba(0, 21, 41, 0.4) 100%);
         }
 
         .float-btn {
@@ -37,28 +36,27 @@
             background-color: #00d2ff;
         }
 
-        /* 資訊小標籤樣式 */
         .info-tag {
-            background: rgba(24, 144, 255, 0.15);
+            background: rgba(24, 144, 255, 0.1);
             border-left: 3px solid #1890ff;
             padding: 8px 15px;
         }
     </style>
 </head>
-<body class="bg-white text-gray-900">
+<body class="text-gray-900">
 
-    <div class="fixed right-0 top-1/2 transform -translate-y-1/2 z-[100] flex flex-col space-y-2">
-        <a href="#" class="float-btn bg-blue-800 text-white px-3 py-6 rounded-l-lg shadow-xl text-sm font-bold tracking-widest">前往報名</a>
-        <a href="#" class="float-btn bg-slate-700 text-white px-3 py-6 rounded-l-lg shadow-xl text-sm font-bold tracking-widest">題庫專區</a>
-        <a href="#" class="float-btn bg-slate-700 text-white px-3 py-6 rounded-l-lg shadow-xl text-sm font-bold tracking-widest">活動簡章</a>
-        <a href="#" class="float-btn bg-blue-900 text-white px-3 py-6 rounded-l-lg shadow-xl text-sm font-bold tracking-widest">匯款完成表單</a>
-        <a href="#" class="float-btn bg-green-600 text-white px-3 py-6 rounded-l-lg shadow-xl text-sm font-bold tracking-widest">加入群組</a>
+    <div class="fixed right-0 top-1/2 transform -translate-y-1/2 z-[100] flex flex-col space-y-2 text-white">
+        <a href="#" class="float-btn bg-blue-800 px-3 py-6 rounded-l-lg shadow-xl text-sm font-bold tracking-widest">前往報名</a>
+        <a href="#" class="float-btn bg-slate-800 px-3 py-6 rounded-l-lg shadow-xl text-sm font-bold tracking-widest">題庫專區</a>
+        <a href="#" class="float-btn bg-slate-800 px-3 py-6 rounded-l-lg shadow-xl text-sm font-bold tracking-widest">活動簡章</a>
+        <a href="#" class="float-btn bg-blue-900 px-3 py-6 rounded-l-lg shadow-xl text-sm font-bold tracking-widest">匯款完成表單</a>
+        <a href="#" class="float-btn bg-green-700 px-3 py-6 rounded-l-lg shadow-xl text-sm font-bold tracking-widest">加入群組</a>
     </div>
 
     <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <div class="w-8 h-8 navy-dark rounded-sm flex items-center justify-center font-bold text-white text-xs">JBC</div>
+                <div class="w-8 h-8 navy-dark rounded-sm flex items-center justify-center font-bold text-white text-[10px]">JBC</div>
                 <span class="text-xl font-bold tracking-tight text-slate-800 uppercase">Botball Taiwan</span>
             </div>
             <div class="hidden md:flex space-x-10 text-sm font-medium tracking-widest text-gray-600 uppercase">
@@ -70,10 +68,10 @@
         </div>
     </nav>
 
-    <section class="relative h-screen min-h-[750px] flex items-center overflow-hidden navy-dark">
+    <section class="relative h-screen min-h-[750px] flex items-center overflow-hidden bg-[#001529]">
         <div class="absolute inset-0 z-0">
-            <img src="hero-robot.png" alt="High-tech Robot Lab" class="w-full h-full object-cover object-right md:object-center">
-            <div class="absolute inset-0 hero-gradient"></div>
+            <img src="hero-robot.png" alt="Background" class="w-full h-full object-cover object-center opacity-40 grayscale-[20%]">
+            <div class="absolute inset-0 hero-overlay"></div>
         </div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-6 w-full text-white">
@@ -98,24 +96,24 @@
                         <br class="md:hidden">
                         <div class="info-tag inline-block">
                             <span class="text-blue-400 mr-2">📍</span>
-                            <span class="text-white font-medium">僑光科技大學 圖資大樓4樓語言中心</span>
+                            <span class="text-white font-medium text-sm md:text-base">僑光科技大學 圖資大樓4樓語言中心</span>
                         </div>
-                        <p class="text-sm text-gray-400 ml-1 mt-1 font-light tracking-wide">
+                        <p class="text-xs text-gray-400 ml-1 mt-1 font-light tracking-wide">
                             (台中市西屯區僑光路100號)
                         </p>
                     </div>
                 </div>
 
                 <div class="mt-10">
-                    <div class="inline-block px-10 py-4 border-2 border-blue-400 text-blue-400 font-bold rounded-sm shadow-[0_0_15px_rgba(0,210,255,0.4)] hover:bg-blue-400 hover:text-white transition duration-500 cursor-pointer">
-                        活動詳細資訊
+                    <div class="inline-block px-10 py-4 border border-blue-400/50 text-blue-300 font-bold rounded-sm hover:bg-blue-400 hover:text-white transition duration-500 cursor-pointer">
+                        EXPLORE MORE
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-white py-10 border-t border-gray-100 text-center text-gray-400 text-xs tracking-widest uppercase">
+    <footer class="bg-navy-dark py-10 border-t border-white/10 text-center text-gray-500 text-xs tracking-widest uppercase">
         <p>© 2025 JUNIOR BOTBALL CHALLENGE TAIWAN. ALL RIGHTS RESERVED.</p>
     </footer>
 
