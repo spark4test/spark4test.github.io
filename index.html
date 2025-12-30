@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公司名稱 | 官方網站</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 自定義平滑捲動 */
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-blue-600">COMPANY LOGO</div>
+            <div class="space-x-6">
+                <a href="#home" class="hover:text-blue-600">首頁</a>
+                <a href="#services" class="hover:text-blue-600">服務項目</a>
+                <a href="#about" class="hover:text-blue-600">關於我們</a>
+                <a href="#contact" class="hover:text-blue-600">聯絡我們</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
+        <div class="text-center">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6">創新，引領未來</h1>
+            <p class="text-xl md:text-2xl mb-8 opacity-90">提供最專業的解決方案，助您的業務飛速成長</p>
+            <a href="#contact" class="bg-white text-blue-600 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition">立即諮詢</a>
+        </div>
+    </section>
+
+    <section id="services" class="py-20 max-w-7xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">我們的服務</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-xl shadow-lg hover:transform hover:-translate-y-2 transition">
+                <div class="text-blue-500 text-4xl mb-4">🚀</div>
+                <h3 class="text-xl font-bold mb-2">快速部署</h3>
+                <p class="text-gray-600">我們保證在最短的時間內完成您的需求，讓您的事業搶占先機。</p>
+            </div>
+            <div class="bg-white p-8 rounded-xl shadow-lg hover:transform hover:-translate-y-2 transition">
+                <div class="text-blue-500 text-4xl mb-4">🛡️</div>
+                <h3 class="text-xl font-bold mb-2">安全可靠</h3>
+                <p class="text-gray-600">最高等級的安全防護，確保您的數據與資訊安全無虞。</p>
+            </div>
+            <div class="bg-white p-8 rounded-xl shadow-lg hover:transform hover:-translate-y-2 transition">
+                <div class="text-blue-500 text-4xl mb-4">📊</div>
+                <h3 class="text-xl font-bold mb-2">數據分析</h3>
+                <p class="text-gray-600">透過精確的數據分析，為您的決策提供最強而有力的支持。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-gray-100">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-8">關於我們</h2>
+            <p class="text-lg text-gray-700 leading-relaxed">
+                我們成立於 2024 年，專注於提供高品質的服務。團隊由一群熱愛創新的專業人士組成，致力於解決客戶面臨的各項挑戰。
+            </p>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 max-w-3xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">聯絡我們</h2>
+        <form class="space-y-4">
+            <input type="text" placeholder="您的姓名" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <input type="email" placeholder="電子信箱" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <textarea placeholder="您的需求" rows="4" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+            <button class="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition">送出訊息</button>
+        </form>
+    </section>
+
+    <footer class="py-10 text-center border-t border-gray-200">
+        <p class="text-gray-500">&copy; 2025 公司名稱. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
