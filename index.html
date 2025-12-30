@@ -3,117 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Junior Botball Challenge | 2026 台中站</title>
+    <title>Junior Botball Challenge | 紫金電競版</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&family=Orbitron:wght@700&display=swap');
         
-        body { font-family: 'Noto Sans TC', sans-serif; scroll-behavior: smooth; background-color: #001529; }
-        .navy-dark { background-color: #001529; }
+        body { font-family: 'Noto Sans TC', sans-serif; scroll-behavior: smooth; background-color: #000000; }
         
-        /* 霓虹燈效果 */
-        .neon-text {
+        /* 紫色霓虹燈效果 */
+        .neon-purple {
             font-family: 'Orbitron', sans-serif;
             color: #fff;
-            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #00d2ff, 0 0 30px #00d2ff;
+            text-shadow: 0 0 5px #fff, 0 0 10px #bf00ff, 0 0 20px #bf00ff, 0 0 30px #bf00ff;
         }
 
-        /* 讓背景若隱若現的漸層遮罩 */
+        /* 金色副標效果 */
+        .gold-text {
+            color: #FFD700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        /* 背景遮罩：讓左側文字背後深一點，右側機器人清晰 */
         .hero-overlay {
-            background: linear-gradient(75deg, 
-                rgba(0, 21, 41, 1) 20%, 
-                rgba(0, 21, 41, 0.8) 50%, 
-                rgba(0, 21, 41, 0.4) 100%);
+            background: linear-gradient(90deg, 
+                rgba(0, 0, 0, 0.9) 0%, 
+                rgba(0, 0, 0, 0.6) 40%, 
+                rgba(0, 0, 0, 0.1) 100%);
         }
 
+        /* 側邊欄按鍵樣式 */
         .float-btn {
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             writing-mode: vertical-rl;
             text-orientation: mixed;
-        }
-        .float-btn:hover {
-            transform: translateX(-10px);
-            background-color: #00d2ff;
+            border-left: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
         }
 
-        .info-tag {
-            background: rgba(24, 144, 255, 0.1);
-            border-left: 3px solid #1890ff;
-            padding: 8px 15px;
+        /* 各別按鍵顏色與霓虹邊框 */
+        .btn-purple { background: #2d004d; border: 1px solid #bf00ff; box-shadow: 0 0 10px #bf00ff; }
+        .btn-gold { background: #4d4500; border: 1px solid #FFD700; box-shadow: 0 0 10px #FFD700; color: #FFD700; }
+        .btn-black { background: #1a1a1a; border: 1px solid #ffffff; box-shadow: 0 0 10px rgba(255,255,255,0.3); }
+
+        .float-btn:hover {
+            transform: translateX(-15px);
+            box-shadow: 0 0 20px currentColor; /* 使用本身的顏色發光 */
+            z-index: 10;
         }
     </style>
 </head>
-<body class="text-gray-900">
+<body class="text-white">
 
-    <div class="fixed right-0 top-1/2 transform -translate-y-1/2 z-[100] flex flex-col space-y-2 text-white">
-        <a href="#" class="float-btn bg-blue-800 px-3 py-6 rounded-l-lg shadow-xl text-sm font-bold tracking-widest">前往報名</a>
-        <a href="#" class="float-btn bg-slate-800 px-3 py-6 rounded-l-lg shadow-xl text-sm font-bold tracking-widest">題庫專區</a>
-        <a href="#" class="float-btn bg-slate-800 px-3 py-6 rounded-l-lg shadow-xl text-sm font-bold tracking-widest">活動簡章</a>
-        <a href="#" class="float-btn bg-blue-900 px-3 py-6 rounded-l-lg shadow-xl text-sm font-bold tracking-widest">匯款完成表單</a>
-        <a href="#" class="float-btn bg-green-700 px-3 py-6 rounded-l-lg shadow-xl text-sm font-bold tracking-widest">加入群組</a>
+    <div class="fixed right-0 top-1/2 transform -translate-y-1/2 z-[100] flex flex-col space-y-3">
+        <a href="#" class="float-btn btn-purple px-3 py-6 rounded-l-lg text-sm font-bold tracking-widest">前往報名</a>
+        <a href="#" class="float-btn btn-black px-3 py-6 rounded-l-lg text-sm font-bold tracking-widest">題庫專區</a>
+        <a href="#" class="float-btn btn-gold px-3 py-6 rounded-l-lg text-sm font-bold tracking-widest">活動簡章</a>
+        <a href="#" class="float-btn btn-purple px-3 py-6 rounded-l-lg text-sm font-bold tracking-widest">匯款完成表單</a>
+        <a href="#" class="float-btn btn-gold px-3 py-6 rounded-l-lg text-sm font-bold tracking-widest">加入群組</a>
     </div>
 
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
+    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-purple-900/50">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <div class="w-8 h-8 navy-dark rounded-sm flex items-center justify-center font-bold text-white text-[10px]">JBC</div>
-                <span class="text-xl font-bold tracking-tight text-slate-800 uppercase">Botball Taiwan</span>
+                <div class="w-8 h-8 bg-gradient-to-br from-purple-600 to-gold-500 rounded-sm flex items-center justify-center font-bold text-white text-[10px]">JBC</div>
+                <span class="text-xl font-bold tracking-tight text-white uppercase">Botball Taiwan</span>
             </div>
-            <div class="hidden md:flex space-x-10 text-sm font-medium tracking-widest text-gray-600 uppercase">
-                <span>活動公告</span>
-                <span>競賽規則</span>
-                <span>報名資訊</span>
-                <span>歷屆回顧</span>
+            <div class="hidden md:flex space-x-10 text-sm font-medium tracking-widest text-gray-400 uppercase">
+                <span class="hover:text-purple-400 cursor-pointer transition">活動公告</span>
+                <span class="hover:text-gold-400 cursor-pointer transition">競賽規則</span>
+                <span class="hover:text-purple-400 cursor-pointer transition">報名資訊</span>
             </div>
         </div>
     </nav>
 
-    <section class="relative h-screen min-h-[750px] flex items-center overflow-hidden bg-[#001529]">
-        <div class="absolute inset-0 z-0">
-            <img src="hero-robot.jpg" alt="Background" class="w-full h-full object-cover object-center opacity-40 grayscale-[20%]">
+    <section class="relative h-screen min-h-[750px] flex items-center overflow-hidden">
+        <div class="absolute inset-0 z-0 bg-black">
+            <img src="hero-robot.jpg" alt="Background" class="w-full h-full object-cover object-right opacity-70">
             <div class="absolute inset-0 hero-overlay"></div>
         </div>
 
-        <div class="relative z-10 max-w-7xl mx-auto px-6 w-full text-white">
-            <div class="max-w-4xl">
-                <h1 class="text-5xl md:text-8xl font-bold mb-4 neon-text tracking-tighter">
+        <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
+            <div class="max-w-2xl"> <h1 class="text-5xl md:text-8xl font-bold mb-6 neon-purple tracking-tighter">
                     Junior Botball Challenge
                 </h1>
                 
-                <div class="mt-6 space-y-4">
-                    <p class="text-xl md:text-2xl font-bold text-blue-300 tracking-widest">
+                <div class="mt-8 space-y-6">
+                    <p class="text-2xl md:text-3xl font-bold gold-text uppercase">
                         2026 STEM 科技教育競賽
                     </p>
-                    <p class="text-lg md:text-xl text-gray-300 font-light leading-relaxed mb-6">
+                    <p class="text-lg md:text-xl text-purple-200 font-light leading-relaxed">
                         暨 Botball 國際教育機器人大會 JBC 開放挑戰 - 台中站
                     </p>
 
-                    <div class="space-y-3 mt-8">
-                        <div class="info-tag inline-block mr-4">
-                            <span class="text-blue-400 mr-2">📅</span>
-                            <span class="text-white font-medium">2026年5月20日 (星期三)</span>
+                    <div class="space-y-4 mt-10">
+                        <div class="inline-block border-l-4 border-gold-500 bg-gold-500/10 px-6 py-3">
+                            <span class="text-gold-400 mr-2">📅</span>
+                            <span class="text-white font-bold text-lg">2026年5月20日 (星期三)</span>
                         </div>
-                        <br class="md:hidden">
-                        <div class="info-tag inline-block">
-                            <span class="text-blue-400 mr-2">📍</span>
-                            <span class="text-white font-medium text-sm md:text-base">僑光科技大學 圖資大樓4樓語言中心</span>
+                        <br>
+                        <div class="inline-block border-l-4 border-purple-500 bg-purple-500/10 px-6 py-3">
+                            <span class="text-purple-400 mr-2">📍</span>
+                            <span class="text-white font-bold">僑光科技大學 圖資大樓4樓語言中心</span>
                         </div>
-                        <p class="text-xs text-gray-400 ml-1 mt-1 font-light tracking-wide">
-                            (台中市西屯區僑光路100號)
-                        </p>
+                        <p class="text-sm text-gray-500 ml-2">(台中市西屯區僑光路100號)</p>
                     </div>
                 </div>
 
-                <div class="mt-10">
-                    <div class="inline-block px-10 py-4 border border-blue-400/50 text-blue-300 font-bold rounded-sm hover:bg-blue-400 hover:text-white transition duration-500 cursor-pointer">
-                        EXPLORE MORE
-                    </div>
+                <div class="mt-12">
+                    <button class="px-12 py-4 bg-transparent border-2 border-purple-500 text-purple-400 font-bold tracking-widest hover:bg-purple-500 hover:text-white hover:shadow-[0_0_30px_#bf00ff] transition-all duration-300">
+                        ENTER CHALLENGE
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-navy-dark py-10 border-t border-white/10 text-center text-gray-500 text-xs tracking-widest uppercase">
+    <footer class="bg-black py-10 border-t border-purple-900/30 text-center text-gray-600 text-xs tracking-widest uppercase">
         <p>© 2025 JUNIOR BOTBALL CHALLENGE TAIWAN. ALL RIGHTS RESERVED.</p>
     </footer>
 
