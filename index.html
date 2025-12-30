@@ -24,17 +24,11 @@
             letter-spacing: 0.1em;
         }
 
-        /* LOGO 修正：保留紅色，同時讓黑色文字在黑底顯現 */
-        /* 使用 screen 模式會過濾掉黑色，保留彩色與白色 */
+        /* LOGO 修正：將黑色字體(Junior/Challenge)變為白色，並保持機器人紅色 */
         .logo-fix {
-            mix-blend-mode: screen; 
-            filter: brightness(1.5) contrast(1.2) drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+            /* brightness(5) 能將黑字轉白，contrast(1.2) 確保紅色機器人不褪色 */
+            filter: brightness(5) contrast(1.2) drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
             transition: all 0.3s ease;
-        }
-        
-        /* 另一種方案：若 screen 效果不佳，改用以下濾鏡組合，僅增亮不反轉顏色 */
-        .logo-enhance {
-            filter: brightness(2) contrast(1.1);
         }
 
         .nav-link {
@@ -60,27 +54,41 @@
             z-index: 200;
         }
 
-        /* 右側懸浮按鈕：徹底解決遮擋與間距問題 */
+        /* 右側懸浮按鈕：優化間距，確保五個按鈕皆可見 */
         .float-container {
             position: fixed;
             right: 0;
-            top: 55%; 
+            top: 50%;
             transform: translateY(-50%);
-            z-index: 2000; 
+            z-index: 2000;
             display: flex;
             flex-direction: column;
-            gap: 8px; 
+            gap: 0.8vh; /* 使用視窗比例間距 */
         }
         .float-btn {
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             writing-mode: vertical-rl;
             text-orientation: mixed;
-            padding: 18px 10px; 
+            padding: 1.5vh 10px; /* 動態內距 */
+            font-size: 11px;
+            font-weight: bold;
         }
         .btn-purple { background: #2d004d; border: 1px solid #bf00ff; box-shadow: 0 0 10px #bf00ff; }
         .btn-gold { background: #4d4500; border: 1px solid #FFD700; box-shadow: 0 0 10px #FFD700; color: #FFD700; }
         .btn-black { background: #1a1a1a; border: 1px solid #ffffff; box-shadow: 0 0 10px rgba(255,255,255,0.3); }
-        .float-btn:hover { transform: translateX(-15px); box-shadow: 0 0 20px currentColor; }
+        .float-btn:hover { transform: translateX(-10px); box-shadow: 0 0 20px currentColor; }
+
+        /* 左下角 JBC 專屬字樣標記 */
+        .jbc-corner-mark {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 50;
+            opacity: 0.5;
+            pointer-events: none;
+            border-left: 2px solid #bf00ff;
+            padding-left: 10px;
+        }
 
         .hero-overlay {
             background: linear-gradient(90deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0) 100%);
@@ -92,14 +100,19 @@
 <body>
 
     <div class="float-container">
-        <a href="#" class="float-btn btn-purple rounded-l-lg text-[10px] font-bold tracking-widest text-white">前往報名</a>
-        <a href="#" class="float-btn btn-black rounded-l-lg text-[10px] font-bold tracking-widest text-white">題庫專區</a>
-        <a href="#" class="float-btn btn-gold rounded-l-lg text-[10px] font-bold tracking-widest text-gold-500">活動簡章</a>
-        <a href="#" class="float-btn btn-purple rounded-l-lg text-[10px] font-bold tracking-widest text-white">匯款完成表單</a>
-        <a href="#" class="float-btn btn-gold rounded-l-lg text-[10px] font-bold tracking-widest text-gold-500">加入群組</a>
+        <a href="#" class="float-btn btn-purple rounded-l-lg text-white">前往報名</a>
+        <a href="#" class="float-btn btn-black rounded-l-lg text-white">題庫專區</a>
+        <a href="#" class="float-btn btn-gold rounded-l-lg">活動簡章</a>
+        <a href="#" class="float-btn btn-purple rounded-l-lg text-white">匯款完成表單</a>
+        <a href="#" class="float-btn btn-gold rounded-l-lg">加入群組</a>
     </div>
 
-    <nav class="fixed w-full z-[1100] bg-black/90 backdrop-blur-md border-b border-purple-900/50">
+    <div class="jbc-corner-mark">
+        <div class="font-bold text-lg tracking-tighter text-white" style="font-family: 'Orbitron';">JBC TAIWAN</div>
+        <div class="text-[9px] text-yellow-500 tracking-[0.2em] font-bold">OFFICIAL CHALLENGE</div>
+    </div>
+
+    <nav class="fixed w-full z-[1100] bg-black/95 backdrop-blur-md border-b border-purple-900/50">
         <div class="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
             <div class="flex items-center space-x-4 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
                 <img src="jbc-logo.png" alt="Logo" class="h-16 w-auto logo-fix">
@@ -125,7 +138,7 @@
 
     <section id="home" class="relative min-h-screen flex items-center overflow-hidden p-0">
         <div class="absolute inset-0 z-0 bg-black">
-            <img src="unnamed.jpg" alt="Background" class="w-full h-full object-cover object-right opacity-70">
+            <img src="hero-robot.jpg" alt="Background" class="w-full h-full object-cover object-right opacity-70">
             <div class="absolute inset-0 hero-overlay"></div>
         </div>
 
