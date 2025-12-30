@@ -24,9 +24,8 @@
             letter-spacing: 0.1em;
         }
 
-        /* LOGO 修正：將黑色字體(Junior/Challenge)變為白色，並保持機器人紅色 */
+        /* LOGO 修正：將黑色字體變為白色，並保持機器人紅色 */
         .logo-fix {
-            /* brightness(5) 能將黑字轉白，contrast(1.2) 確保紅色機器人不褪色 */
             filter: brightness(5) contrast(1.2) drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
             transition: all 0.3s ease;
         }
@@ -54,7 +53,7 @@
             z-index: 200;
         }
 
-        /* 右側懸浮按鈕：優化間距，確保五個按鈕皆可見 */
+        /* 右側懸浮按鈕：優化間距與層級 */
         .float-container {
             position: fixed;
             right: 0;
@@ -63,13 +62,13 @@
             z-index: 2000;
             display: flex;
             flex-direction: column;
-            gap: 0.8vh; /* 使用視窗比例間距 */
+            gap: 0.8vh;
         }
         .float-btn {
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             writing-mode: vertical-rl;
             text-orientation: mixed;
-            padding: 1.5vh 10px; /* 動態內距 */
+            padding: 1.5vh 10px;
             font-size: 11px;
             font-weight: bold;
         }
@@ -78,7 +77,7 @@
         .btn-black { background: #1a1a1a; border: 1px solid #ffffff; box-shadow: 0 0 10px rgba(255,255,255,0.3); }
         .float-btn:hover { transform: translateX(-10px); box-shadow: 0 0 20px currentColor; }
 
-        /* 左下角 JBC 專屬字樣標記 */
+        /* 左下角 JBC 標記 */
         .jbc-corner-mark {
             position: fixed;
             bottom: 20px;
@@ -90,8 +89,9 @@
             padding-left: 10px;
         }
 
+        /* 首頁底圖漸層遮罩 - 確保標題清晰 */
         .hero-overlay {
-            background: linear-gradient(90deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0) 100%);
+            background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.2) 100%);
         }
         
         section { padding-top: 140px; padding-bottom: 80px; min-height: 80vh; }
@@ -138,7 +138,7 @@
 
     <section id="home" class="relative min-h-screen flex items-center overflow-hidden p-0">
         <div class="absolute inset-0 z-0 bg-black">
-            <img src="hero-robot.jpg" alt="Background" class="w-full h-full object-cover object-right opacity-70">
+            <img src="unnamed.jpg" alt="Background" class="w-full h-full object-cover object-center opacity-80">
             <div class="absolute inset-0 hero-overlay"></div>
         </div>
 
