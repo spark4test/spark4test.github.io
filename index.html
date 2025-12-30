@@ -24,13 +24,19 @@
             letter-spacing: 0.1em;
         }
 
-        /* LOGO 強化修正：處理黑色字體在黑底消失的問題 */
+        /* LOGO 修正：保留紅色，同時讓黑色文字在黑底顯現 */
+        /* 使用 screen 模式會過濾掉黑色，保留彩色與白色 */
         .logo-fix {
-            filter: invert(1) brightness(2) drop-shadow(0 0 10px rgba(191, 0, 255, 0.5));
+            mix-blend-mode: screen; 
+            filter: brightness(1.5) contrast(1.2) drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
             transition: all 0.3s ease;
         }
+        
+        /* 另一種方案：若 screen 效果不佳，改用以下濾鏡組合，僅增亮不反轉顏色 */
+        .logo-enhance {
+            filter: brightness(2) contrast(1.1);
+        }
 
-        /* 導覽列文字發光 */
         .nav-link {
             transition: all 0.3s;
             cursor: pointer;
@@ -58,18 +64,18 @@
         .float-container {
             position: fixed;
             right: 0;
-            top: 55%; /* 位置居中偏下 */
+            top: 55%; 
             transform: translateY(-50%);
-            z-index: 2000; /* 超高等級，確保不被任何東西遮擋 */
+            z-index: 2000; 
             display: flex;
             flex-direction: column;
-            gap: 8px; /* 縮小間距 */
+            gap: 8px; 
         }
         .float-btn {
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             writing-mode: vertical-rl;
             text-orientation: mixed;
-            padding: 20px 10px; /* 稍微縮小按鈕高度 */
+            padding: 18px 10px; 
         }
         .btn-purple { background: #2d004d; border: 1px solid #bf00ff; box-shadow: 0 0 10px #bf00ff; }
         .btn-gold { background: #4d4500; border: 1px solid #FFD700; box-shadow: 0 0 10px #FFD700; color: #FFD700; }
@@ -86,11 +92,11 @@
 <body>
 
     <div class="float-container">
-        <a href="#" class="float-btn btn-purple rounded-l-lg text-xs font-bold tracking-widest text-white">前往報名</a>
-        <a href="#" class="float-btn btn-black rounded-l-lg text-xs font-bold tracking-widest text-white">題庫專區</a>
-        <a href="#" class="float-btn btn-gold rounded-l-lg text-xs font-bold tracking-widest">活動簡章</a>
-        <a href="#" class="float-btn btn-purple rounded-l-lg text-xs font-bold tracking-widest text-white">匯款完成表單</a>
-        <a href="#" class="float-btn btn-gold rounded-l-lg text-xs font-bold tracking-widest">加入群組</a>
+        <a href="#" class="float-btn btn-purple rounded-l-lg text-[10px] font-bold tracking-widest text-white">前往報名</a>
+        <a href="#" class="float-btn btn-black rounded-l-lg text-[10px] font-bold tracking-widest text-white">題庫專區</a>
+        <a href="#" class="float-btn btn-gold rounded-l-lg text-[10px] font-bold tracking-widest text-gold-500">活動簡章</a>
+        <a href="#" class="float-btn btn-purple rounded-l-lg text-[10px] font-bold tracking-widest text-white">匯款完成表單</a>
+        <a href="#" class="float-btn btn-gold rounded-l-lg text-[10px] font-bold tracking-widest text-gold-500">加入群組</a>
     </div>
 
     <nav class="fixed w-full z-[1100] bg-black/90 backdrop-blur-md border-b border-purple-900/50">
@@ -141,9 +147,9 @@
             <h2 class="text-4xl font-bold neon-purple mb-12">活動公告 / NEWS</h2>
             <div class="grid gap-6">
                 <div class="bg-white/5 border-l-4 border-purple-600 p-8 hover:bg-white/10 transition">
-                    <p class="text-gold-500 mb-2">2025.12.30</p>
-                    <h3 class="text-2xl font-bold">2026 台中站競賽規程初步架構發佈</h3>
-                    <p class="text-gray-400 mt-4">內容即將更新，敬請期待...</p>
+                    <p class="text-gold-500 mb-2 font-bold">2025.12.30</p>
+                    <h3 class="text-2xl font-bold text-white">2026 台中站競賽規程初步架構發佈</h3>
+                    <p class="text-gray-400 mt-4 leading-relaxed">正式內容即將更新，包含最新積木規格與場地任務圖，敬請各隊伍密切留意網站動態。</p>
                 </div>
             </div>
         </div>
@@ -155,11 +161,19 @@
             <div class="grid md:grid-cols-2 gap-10">
                 <div class="border border-purple-900/50 p-8 rounded-xl bg-gradient-to-b from-purple-900/10 to-transparent">
                     <h4 class="text-xl text-gold-500 font-bold mb-4 uppercase">基本組建準則</h4>
-                    <p class="text-gray-400 leading-relaxed text-sm">此部分將陸續延生關於機器人積木、感測器使用規範等內容。</p>
+                    <p class="text-gray-400 leading-relaxed text-sm">
+                        • 機器人必須使用指定模組化積木組建。<br>
+                        • 必須配備自主編程控制器，禁止遙控。<br>
+                        • 場地尺寸與任務點分佈將於簡章內詳述。
+                    </p>
                 </div>
                 <div class="border border-purple-900/50 p-8 rounded-xl">
                     <h4 class="text-xl text-gold-500 font-bold mb-4 uppercase">賽場計分方式</h4>
-                    <p class="text-gray-400 leading-relaxed text-sm">此部分將陸續延生關於任務分數、加分項與時間限制等內容。</p>
+                    <p class="text-gray-400 leading-relaxed text-sm">
+                        • 任務得分：根據完成之自動化任務分值加總。<br>
+                        • 獎勵加分：團隊合作解說、創意結構設計。<br>
+                        • 扣分項：機器人觸碰場外邊界、人工干預。
+                    </p>
                 </div>
             </div>
         </div>
@@ -168,9 +182,9 @@
     <section id="register" class="bg-[#050010] text-center">
         <div class="max-w-4xl mx-auto px-6">
             <h2 class="text-4xl font-bold neon-purple mb-12">報名資訊 / REGISTER</h2>
-            <div class="p-12 border-2 border-dashed border-purple-900/50 rounded-2xl">
-                <p class="text-gray-400 mb-8 text-lg">報名系統即將開放，請密切注意公告。</p>
-                <div class="inline-block px-12 py-5 bg-purple-600 font-bold text-white rounded-sm shadow-[0_0_20px_rgba(191,0,255,0.6)]">
+            <div class="p-12 border-2 border-dashed border-purple-900/50 rounded-2xl bg-black/50">
+                <p class="text-gray-400 mb-8 text-lg">報名系統即將於 2026 年初正式開放。</p>
+                <div class="inline-block px-12 py-5 bg-gradient-to-r from-purple-700 to-purple-900 font-bold text-white rounded-sm shadow-[0_0_20px_rgba(191,0,255,0.6)] cursor-not-allowed">
                     COMING SOON
                 </div>
             </div>
@@ -179,14 +193,14 @@
 
     <footer class="bg-black py-16 border-t border-purple-900/30 text-center">
         <img src="jbc-logo.png" alt="Logo" class="h-16 w-auto mx-auto logo-fix mb-6">
-        <p class="text-gray-600 text-xs tracking-widest uppercase">© 2025 JUNIOR BOTBALL TAIWAN. ALL RIGHTS RESERVED.</p>
+        <p class="text-gray-600 text-xs tracking-[0.3em] uppercase">© 2025 JUNIOR BOTBALL TAIWAN. ALL RIGHTS RESERVED.</p>
     </footer>
 
     <script>
         function scrollToSection(id) {
             const element = document.getElementById(id);
             if (element) {
-                const navHeight = 90; // 配合加大的導覽列
+                const navHeight = 90; 
                 window.scrollTo({
                     top: element.offsetTop - navHeight,
                     behavior: 'smooth'
