@@ -24,9 +24,8 @@
             letter-spacing: 0.1em;
         }
 
-        /* LOGO 修正：移除顏色干擾，保留原色並增加紫色發光邊框 */
+        /* LOGO 修正：紫色發光邊框 */
         .logo-original-glow {
-            /* 移除 brightness 與 contrast，僅保留紫色發光 */
             filter: drop-shadow(0 0 8px #bf00ff) drop-shadow(0 0 2px #bf00ff);
             transition: all 0.3s ease;
         }
@@ -44,7 +43,7 @@
         .dropdown:hover .dropdown-menu { display: block; }
         .dropdown-menu {
             display: none;
-            background-color: rgba(0, 30, 60, 0.95); /* 海洋藍色系 */
+            background-color: rgba(0, 30, 60, 0.95);
             border: 1px solid #bf00ff;
             box-shadow: 0 0 15px rgba(191, 0, 255, 0.3);
             position: absolute;
@@ -69,37 +68,47 @@
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             writing-mode: vertical-rl;
             text-orientation: mixed;
-            padding: 1.5vh 10px;
-            font-size: 11px;
-            font-weight: bold;
+            padding: 1.8vh 12px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
         .btn-purple { background: #2d004d; border: 1px solid #bf00ff; box-shadow: 0 0 10px #bf00ff; }
         .btn-gold { background: #4d4500; border: 1px solid #FFD700; box-shadow: 0 0 10px #FFD700; color: #FFD700; }
         .btn-black { background: #1a1a1a; border: 1px solid #ffffff; box-shadow: 0 0 10px rgba(255,255,255,0.3); }
         .float-btn:hover { transform: translateX(-10px); box-shadow: 0 0 20px currentColor; }
 
-        /* 首頁底圖完整顯示處理 */
+        /* 首頁底圖區：設定為優雅的橫長方形 (70% 螢幕高度) */
         .hero-section {
             position: relative;
             width: 100%;
-            height: auto;
-            min-height: 100vh;
+            height: 70vh; /* 調整為長方形比例 */
             display: flex;
             align-items: center;
             background: #000;
+            margin-top: 80px; /* 給導覽列空間 */
         }
+
+        /* 圖片處理：若隱若現效果 */
         .hero-img-full {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* 確保整張圖片顯示，不裁切 */
+            object-fit: cover; /* 填滿長方形且不變形 */
+            object-position: center;
+            opacity: 0.5; /* 若隱若現：50% 透明度 */
             z-index: 0;
         }
 
+        /* 漸層遮罩：讓圖片底端消失在背景中 */
         .hero-overlay {
-            background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%);
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(0,0,0,1) 5%, rgba(0,0,0,0) 50%),
+                        linear-gradient(90deg, rgba(2, 5, 16, 0.8) 0%, rgba(2, 5, 16, 0.2) 100%);
+            z-index: 1;
         }
         
-        section { padding-top: 100px; padding-bottom: 80px; }
+        section { padding-top: 80px; padding-bottom: 80px; }
     </style>
 </head>
 <body>
@@ -112,10 +121,10 @@
         <a href="#" class="float-btn btn-gold rounded-l-lg">加入群組</a>
     </div>
 
-    <nav class="fixed w-full z-[1100] bg-blue-950/90 backdrop-blur-md border-b border-blue-800/50 shadow-lg shadow-blue-900/20">
-        <div class="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
+    <nav class="fixed w-full top-0 z-[1100] bg-blue-950/95 backdrop-blur-md border-b border-blue-800/50 shadow-lg shadow-blue-900/20">
+        <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-4 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
-                <img src="jbc-logo.png" alt="Logo" class="h-16 w-auto logo-original-glow">
+                <img src="jbc-logo.png" alt="Logo" class="h-14 w-auto logo-original-glow">
                 <span class="text-xl font-bold tracking-tight text-white uppercase ml-2">Junior Botball Taiwan</span>
             </div>
             
@@ -137,19 +146,17 @@
     </nav>
 
     <section id="home" class="hero-section p-0 overflow-hidden">
-        <div class="absolute inset-0 flex items-center justify-center bg-black">
-            <img src="unnamed.jpg" alt="Background" class="hero-img-full">
-            <div class="absolute inset-0 hero-overlay"></div>
-        </div>
+        <img src="unnamed.jpg" alt="Background" class="hero-img-full">
+        <div class="hero-overlay"></div>
 
-        <div class="relative z-10 max-w-7xl mx-auto px-6 w-full pt-20">
-            <div class="max-w-2xl bg-black/40 p-6 rounded-lg backdrop-blur-sm">
-                <h1 class="text-5xl md:text-7xl font-bold mb-6 neon-purple tracking-tighter leading-tight">
+        <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
+            <div class="max-w-2xl bg-blue-950/20 p-8 rounded-2xl backdrop-blur-sm border border-white/10">
+                <h1 class="text-5xl md:text-7xl font-bold mb-4 neon-purple tracking-tighter leading-tight">
                     Junior<br>Botball Challenge
                 </h1>
-                <div class="mt-8 space-y-4">
-                    <p class="text-2xl md:text-3xl font-bold gold-text uppercase">2026 STEM 科技教育競賽</p>
-                    <p class="text-lg md:text-xl text-blue-200 font-light italic">讓台灣的科技教育與國際接軌</p>
+                <div class="mt-6 space-y-2">
+                    <p class="text-xl md:text-3xl font-bold gold-text uppercase">2026 STEM 科技教育競賽</p>
+                    <p class="text-lg md:text-xl text-blue-100 font-light italic">讓台灣的科技教育與國際接軌</p>
                 </div>
             </div>
         </div>
